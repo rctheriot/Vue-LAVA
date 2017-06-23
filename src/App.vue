@@ -54,18 +54,18 @@
     <main>
       <v-container fluid>
         <v-slide-y-transition mode="out-in">
-          <v-layout column align-center>
-            <img src="/public/v.png" alt="Vuetify.js" class="mb-5" />
-            <blockquote>
-              &#8220;Vue template for LAVA projects&#8221;
-              <footer>
-                <small>
-                  <em>&mdash;John Johnson</em>
-                </small>
-              </footer>
-            </blockquote>
+          <v-layout column-center>
+            <img src="/public/v.png" alt="Vuetify.js" class="mb-5">
+            <app-bar-graph></app-bar-graph>
+            <app-bar-graph></app-bar-graph>
+            <app-bar-graph></app-bar-graph>
+            <app-bar-graph></app-bar-graph>
+            <app-bar-graph></app-bar-graph>
           </v-layout>
         </v-slide-y-transition>
+        <hr>
+        <app-cereal-table></app-cereal-table>
+        <app-cereal-table></app-cereal-table>
       </v-container>
     </main>
     <v-navigation-drawer
@@ -91,24 +91,33 @@
 </template>
 
 <script>
+  import BarGraph from './components/BarGraph.vue';
+  import CerealTable from './components/CerealTable.vue';
+
   export default {
     data () {
       return {
-        clipped: false,
+        clipped: true,
         drawer: true,
         fixed: false,
         items: [
-          { icon: 'bubble_chart', title: 'Inspire' }
+          { icon: 'list', title: 'Cereal' }
         ],
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: 'LAVA Vue Template',
       }
+    },
+    components: {
+      'app-bar-graph': BarGraph,
+      'app-cereal-table': CerealTable,
     }
   }
+
 </script>
 
 <style lang="stylus">
   @import './stylus/main'
+
 </style>
