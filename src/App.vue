@@ -18,10 +18,20 @@
 <script>
   import Header from './components/Header.vue';
   import Footer from './components/Footer.vue';
+  import { mapActions } from 'vuex';
+
   export default {
     components: {
       'app-header': Header,
       'app-footer': Footer,
+    },
+    methods: {
+      ...mapActions({
+        initialLoad: 'loadData',
+      }),
+    },
+    created: function() {
+       this.initialLoad();
     },
   };
 </script>

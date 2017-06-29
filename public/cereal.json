@@ -1,5 +1,5 @@
-const state = {
-  data: [
+{
+  "cereal": [
     {
       "Brand": "100%_Bran",
       "Energy": "N",
@@ -962,38 +962,5 @@ const state = {
       "Vit": 60,
       "Score": 25
     }
-  ],
-};
-
-const getters = {
-  getData: state => {
-    return state.data;
-  },
-  getHeaders: state => {
-    var headers = [];
-    var obj = Object.keys(state.data[0]);
-    for (var i = 0; i < obj.length; i++) {
-      headers.push({ text: obj[i].toString(), value: obj[i].toString(), left: true, })
-    }
-    return headers;
-  },
-};
-
-const mutations = {
-  setData: (state, payload) => {
-    state.data = payload;
-  },
-};
-
-const actions = {
-  setData: ({ commit }, payload) => {
-    commit('setData', payload);
-  },
-};
-
-export default {
-  state,
-  getters,
-  mutations,
-  actions,
-};
+  ]
+}

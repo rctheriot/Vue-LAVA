@@ -1,13 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import cereal from './modules/cereal';
+import data from './modules/data';
+
+import * as actions from './actions';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+  actions,
   modules: {
-    cereal,
+    data,
   },
 });
 
