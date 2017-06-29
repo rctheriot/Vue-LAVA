@@ -4,6 +4,7 @@
     <v-navigation-drawer persistent clipped v-model="drawerVisibility">
       <v-list>
         <v-list-item  v-for="(item, i) in items" :key="i">
+
           <router-link :to="item.route" style="color:white; text-decoration:none;">
             <v-list-tile value="true">
               <v-list-tile-action>
@@ -14,6 +15,18 @@
               </v-list-tile-content>
             </v-list-tile>
           </router-link>
+
+          <button @click="selComp = item.comp">
+           <v-list-tile value="true">
+              <v-list-tile-action>
+                <v-icon light v-html="item.icon"></v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title v-text="item.title"></v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </button>
+
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -30,6 +43,9 @@
               <img src="/public/v.png" alt="Vuetify.js" class="mb-5">
           </v-layout>
           <v-layout column-center>
+            <keep-alive>
+              <component :is="selComp"></component>
+            </keep-alive>
             <router-view></router-view>
           </v-layout>
       </v-container>
@@ -50,9 +66,10 @@
     data () {
       return {
         items: [
-          { icon: 'list', title: 'Table', route: '/' },
-          { icon: 'insert_chart', title: 'Bar Graph', route: '/bargraph' },
+          { icon: 'list', title: 'Table', route: '/', comp: 'app-cereal-table'},
+          { icon: 'insert_chart', title: 'Bar Graph', route: '/bargraph', comp: 'app-bar-graph'},
         ],
+        selComp: 'app-bar-graph',
         title: 'LAVA Vue Template',
         drawerVisibility: "false",
       }
