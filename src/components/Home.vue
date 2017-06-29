@@ -21,7 +21,7 @@
               label="Search your SHIT!"
               id="testing"
             ></v-text-field>
-            <app-cereal-table></app-cereal-table>
+            <app-table></app-table>
           </v-card>
         </v-flex>
       </v-layout>
@@ -31,13 +31,13 @@
 </template>
 
 <script>
-  import CerealTable from './CerealTable.vue';
+  import Table from './Table.vue';
   import BarGraph from './BarGraph.vue';
   import Unity from './Unity.vue';
 
   export default {
     components: {
-      'app-cereal-table': CerealTable,
+      'app-table': Table,
       'app-bar-graph': BarGraph,
       'app-unity': Unity,
     },
