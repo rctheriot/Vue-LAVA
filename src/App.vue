@@ -1,6 +1,7 @@
 <template>
   <v-app>
 
+<<<<<<< HEAD
     <v-navigation-drawer persistent clipped v-model="drawerVisibility">
       <v-list>
         <v-list-item  v-for="(item, i) in items" :key="i">
@@ -54,15 +55,27 @@
     <v-footer :fixed="true">
       <span>&copy; 2017 LAVA Vue Template</span>
     </v-footer>
+=======
+    <app-header></app-header>
+
+    <main>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </main>
+
+   <app-footer></app-footer>
+>>>>>>> origin/unity-table
 
   </v-app>
 </template>
 
-<script>
-  import BarGraph from './components/BarGraph.vue';
-  import CerealTable from './components/CerealTable.vue';
 
+<script>
+  import Header from './components/Header.vue';
+  import Footer from './components/Footer.vue';
   export default {
+<<<<<<< HEAD
     data () {
       return {
         items: [
@@ -74,15 +87,45 @@
         drawerVisibility: "false",
       }
     },
+=======
+>>>>>>> origin/unity-table
     components: {
-      'app-bar-graph': BarGraph,
-      'app-cereal-table': CerealTable,
-    }
-  }
-
+      'app-header': Header,
+      'app-footer': Footer,
+    },
+  };
 </script>
 
 <style lang="stylus">
   @import './stylus/main'
 
+  .slide-enter-active {
+    animation: slide-in 400ms ease-out forwards;
+  }
+
+  .slide-leave-active{
+    animation: slide-out 400ms ease-out forwards;
+  }
+
+  $keyframes slide-in {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      transform translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform translateY(-30px);
+      opacity: 0;
+    }
+  }
 </style>

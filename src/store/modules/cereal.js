@@ -1,5 +1,5 @@
 const state = {
-  cereals: [
+  data: [
     {
       "Brand": "100%_Bran",
       "Energy": "N",
@@ -966,23 +966,28 @@ const state = {
 };
 
 const getters = {
-  getCereals: state => {
-    return state.cereals;
+  getData: state => {
+    return state.data;
   },
-  getPropNames: state => {
-    return Object.keys(state.cereals[0]);
+  getHeaders: state => {
+    var headers = [];
+    var obj = Object.keys(state.data[0]);
+    for (var i = 0; i < obj.length; i++) {
+      headers.push({ text: obj[i].toString(), value: obj[i].toString(), left: true, })
+    }
+    return headers;
   },
 };
 
 const mutations = {
-  setCereals: (state, payload) => {
-    state.cereals = payload;
+  setData: (state, payload) => {
+    state.data = payload;
   },
 };
 
 const actions = {
-  setCereals: ({ commit }, payload) => {
-    commit('setCereals', payload);
+  setData: ({ commit }, payload) => {
+    commit('setData', payload);
   },
 };
 

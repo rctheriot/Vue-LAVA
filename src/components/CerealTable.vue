@@ -1,31 +1,14 @@
 <template>
   <div>
-     <template v-if="getCereals.length > 0">
-      <table class="table">
-        <thead>
-          <tr>
-            <th v-for="propname in getPropNames">
-              {{ propname }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(cereal, key, index) in getCereals">
-            <td>{{ cereal.Brand }}</td>
-            <td>{{ cereal.Energy }}</td>
-            <td>{{ cereal.Protein }}</td>
-            <td>{{ cereal.Fat }}</td>
-            <td>{{ cereal.Na }}</td>
-            <td>{{ cereal.Fiber }}</td>
-            <td>{{ cereal.Carbs }}</td>
-            <td>{{ cereal.Sugar }}</td>
-            <td>{{ cereal.K }}</td>
-            <td>{{ cereal.Vit }}</td>
-            <td>{{ cereal.Score }}</td>
-          </tr>
-          </tbody>
-      </table>
-    </template>
+    <v-data-table
+      v-bind:headers="getHeaders"
+      :items="getData"
+      class="elevation-2 text-xs-left"
+    >
+      <template slot="items" scope="props">
+        <td v-for="value in props.item" v-bind:key="value.id" class="text-xs-left">{{ value }}</td>
+      </template>
+    </v-data-table>
   </div>
 </template>
 
@@ -36,18 +19,17 @@
   export default {
     data: function() {
       return {
-        
       }
     },
     computed: {
       ...mapGetters([
-          'getCereals',
-          'getPropNames',
+          'getData',
+          'getHeaders',
         ]),
     },
     methods: {
       ...mapActions([
-        'setCereals',
+        'setData',
       ]),
     },
   }
@@ -58,5 +40,8 @@
   table{
     text-align: left;
     font-size: 12px;
+  }
+  .th {
+    text-align: left;
   }
 </style>
