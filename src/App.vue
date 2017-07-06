@@ -18,22 +18,40 @@
 <script>
   import Header from './components/Header.vue';
   import Footer from './components/Footer.vue';
-  import { mapActions } from 'vuex';
+	import { mapActions } from 'vuex';
+	import Firebase from 'firebase';
+
+	let config = {
+  	apiKey: 'AIzaSyAYrygoUsShBDCD6kULcuFSBiUavoSn4So',
+  	authDomain: 'vuejs-lava.Firebaseapp.com',
+  	databaseURL: 'https://vuejs-lava.Firebaseio.com',
+  	projectId: 'vuejs-lava',
+  	storageBucket: 'vuejs-lava.appspot.com',
+  	messagingSenderId: '687097973907',
+	};
+
+	let app = Firebase.initializeApp(config);
+	let db = Firebase.database();
 
   export default {
     components: {
       'app-header': Header,
       'app-footer': Footer,
     },
-    methods: {
-      ...mapActions({
-        initialLoad: 'loadData',
-      }),
+		 methods: {
+      ...mapActions([
+        'setData',
+      ]),
     },
-    created: function() {
-       this.initialLoad();
-    },
+		firebase: {
+			items: db.ref('cereal'),
+		},
+		created: function() {
+			this.setData(this.items);
+		},
+
   };
+
 </script>
 
 <style lang="stylus">

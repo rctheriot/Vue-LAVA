@@ -17,10 +17,6 @@
   import { mapActions } from 'vuex';
 
   export default {
-    data: function() {
-      return {
-      }
-    },
     computed: {
       ...mapGetters([
           'getData',
@@ -36,7 +32,7 @@
 
 </script>
 
-<style>
+<style scoped>
   table{
     text-align: left;
     font-size: 12px;
